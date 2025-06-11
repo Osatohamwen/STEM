@@ -1,0 +1,168 @@
+/* Base: Mobile First */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("https://images.pexels.com/photos/396547/pexels-photo-396547.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: -1;
+}
+.h{
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.5);
+/*    border: 1px solid #ffd800;*/
+    padding: 40px 20px;
+    border-radius: 10px;
+    max-width: 600px;
+    color: #000;
+}
+.yellow{
+    color: #ffd800;
+}
+.white{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 700;
+    font-size: 24px;
+    border: 1px solid #ffd800;
+    padding: 10px;
+    border-radius: 25px;
+}
+.green{
+    color: #00ff90;
+}
+.orange{
+    color: #ff0000;
+}
+.font {
+    font-size: 18px;
+    font-weight: bold;
+}
+.red{
+    color: #ff0000;
+}
+
+h1 {
+    font-size: 20px;
+    color: #00509e;
+    font-family: "Vollkorn", serif;
+}
+.skills {
+    line-height: 2.2;
+}
+label, .select {
+    margin-bottom: 10px 0;
+}
+.select, h2, h3{
+    font-weight: bold;
+    color: #00509e;
+}
+.b{
+    font-weight: bold;
+    color: rgba(1, 1, 1, 0.7)
+}
+p, ul, li, .select{
+    line-height: 1.6;
+}
+.select {
+    margin: 25px 0 0 0;
+    font-size: 18px;
+}
+/*{
+    line-height: 1.6;
+}*/
+
+input[type="text"], input[type="tel"], input[type="email"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+}
+
+input[type="radio"] {
+    margin-right: 8px;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 12px;
+    background-color: #00509e;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+
+    input[type="submit"]:hover {
+        background-color: #004080;
+    }
+input[type="radio"] {
+    transform: scale(1.5);
+    accent-color: #007BFF;
+}
+
+    a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #00509e;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+/* Tablet & Desktop Enhancements */
+@media (min-width: 600px) {
+    .container {
+        max-width: 500px;
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    input[type="submit"] {
+        width: auto;
+    }
+    .select{
+        font-size: 24px;
+    }
+}
