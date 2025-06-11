@@ -1,13 +1,12 @@
 from flask import Flask, render_template, request
 import os
-import csv
 import smtplib
 from email.mime.text import MIMEText
+import json
+import gspread
+from oauth2client.service_account import ServiceAccountCredentials
 
 app = Flask(__name__)
-
-# Ensure data folder exists
-os.makedirs("data", exist_ok=True)
 
 @app.route('/')
 def index():
@@ -24,10 +23,8 @@ def submit():
     if not name or not phone or not skill:
         return "Please fill in all required fields.", 400
 
-    # Save to CSV
-    with open("data/submissions.csv", "a", newline="") as f:
-        writer = csv.writer(f)
-        writer.writerow([name, phone, email, skill])
+    # Save to Google Sheet instead of CSV
+    save_to_google_sheet(name, phone, email, skill)
 
     # Send confirmation email if email is provided
     if email:
@@ -39,11 +36,19 @@ def submit():
 def policy():
     return render_template('policy.html')
 
+def save_to_google_sheet(name, phone, email, skill):
+    scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
+    google_creds = json.loads(os.getenv('GOOGLE_CREDS'))  # Read from environment
+    creds = ServiceAccountCredentials.from_json_keyfile_dict(google_creds, scope)
+
+    client = gspread.authorize(creds)
+    sheet = client.open_by_key("1FBXc05XSs1K_5qhSyAC_jjW4YhR2_CKevee9hNROIpI").sheet1
+    sheet.append_row([name, phone, email, skill])
+
 def send_confirmation_email(name, email, skill):
     subject = "Skill Acquisition Program Registration"
     message = f"Dear {name},\n\nThank you for registering for the {skill} training program.\n\nBlessings,\nSTEM Team"
     
-    # Email config (set real credentials)
     sender = "jglory995@gmail.com"
     password = "gcmd uelw ymuc gnuy"
     

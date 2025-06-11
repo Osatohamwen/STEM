@@ -1,6 +1,10 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\data",
+    "\\static",
+    "\\templates"
   ],
+  "SelectedNode": "\\templates\\policy.html",
   "PreviewInSolutionExplorer": false
 }
