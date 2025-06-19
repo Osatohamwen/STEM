@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    skills = ['Baking', 'Hair Wigging', 'Solar Installation', 'Hair Barbing', 'Headwrap Styling']
+    skills = ['Baking', 'Hair Wigging', 'Solar Installation', 'Hair Barbing', 'Headwrap Styling', 'Musical Instruments']
     return render_template('index.html', skills=skills)
 
 @app.route('/submit', methods=['POST'])
